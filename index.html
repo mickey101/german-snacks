@@ -63,8 +63,13 @@ h1 .der{color:var(--der)}h1 .die{color:var(--die)}h1 .das{color:var(--das)}
 .hills{position:relative;height:150px;margin-top:-40px;z-index:1}
 .hills::before{content:"";position:absolute;left:-20%;right:20%;bottom:-180px;height:320px;background:var(--grass);border-radius:50%}
 .hills::after{content:"";position:absolute;left:35%;right:-25%;bottom:-200px;height:300px;background:var(--grass-dark);border-radius:50%}
-.monsters{position:absolute;z-index:3;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:18px;align-items:flex-end}
-.monsters svg{width:92px;height:auto;display:block}
+.monsters{position:absolute;z-index:3;left:50%;bottom:6px;transform:translateX(-50%);display:flex;gap:22px;align-items:flex-end}
+.monsters .m{width:96px;height:auto;display:block;overflow:visible}
+.m .hop,.m .shadow,.m .pupil,.m .mouth,.m .fang{transform-box:fill-box}
+.m .hop{transform-origin:50% 100%}
+.m .shadow{transform-origin:50% 50%;opacity:.16}
+.m .mouth{transform-origin:50% 50%}
+.m .fang{transform-origin:50% 0}
 
 /* bands */
 .trust{background:var(--grass-dark);color:#fff}
@@ -130,10 +135,22 @@ footer ul{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padd
   .monsters{display:none}
 }
 @media (prefers-reduced-motion:no-preference){
-  .monsters svg{animation:hop 2.4s ease-in-out infinite;transform-origin:bottom}
-  .monsters svg:nth-child(2){animation-delay:.3s}.monsters svg:nth-child(3){animation-delay:.6s}
-  @keyframes hop{0%,70%,100%{transform:translateY(0) scale(1,1)}80%{transform:translateY(-10px) scale(.96,1.05)}90%{transform:translateY(0) scale(1.04,.95)}}
+  /* One hop each, in turn: der, then die, then das, then a short pause. A hop is 30% of the 3.6 s cycle (about 1.1 s). */
+  .m .hop{animation:hop 3.6s ease-in-out infinite}
+  .m .shadow{animation:shade 3.6s ease-in-out infinite}
+  .m .pupil{animation:look 3.6s ease-in-out infinite}
+  .m .mouth{animation:gape 3.6s ease-in-out infinite}
+  .m .fang.l{animation:fangl 3.6s ease-in-out infinite}
+  .m .fang.r{animation:fangr 3.6s ease-in-out infinite}
+  .m:nth-child(2) *{animation-delay:1.1s}.m:nth-child(3) *{animation-delay:2.2s}
+  @keyframes hop{0%,30%,100%{transform:translateY(0) scale(1.03,.97)}15%{transform:translateY(-12px) scale(.95,1.06)}}
+  @keyframes shade{0%,30%,100%{transform:scale(1);opacity:.18}15%{transform:scale(.68);opacity:.09}}
+  @keyframes look{0%,30%,100%{transform:translateY(0)}15%{transform:translateY(-6px)}}
+  @keyframes gape{0%,30%,100%{transform:scale(1,1)}15%{transform:scale(1.4,1.65)}}
+  @keyframes fangl{0%,30%,100%{transform:translate(0,0)}15%{transform:translate(-4px,-6px)}}
+  @keyframes fangr{0%,30%,100%{transform:translate(0,0)}15%{transform:translate(4px,-6px)}}
 }
+
 </style>
 </head>
 <body>
@@ -169,30 +186,9 @@ footer ul{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padd
   </div>
   <div class="hills"></div>
   <div class="monsters" aria-hidden="true">
-    <!-- der: horns -->
-    <svg viewBox="0 0 100 140"><g transform="translate(0,0)">
-      <polygon points="20,36 32,6 40,40" fill="var(--der-shade)"/><polygon points="60,40 68,6 80,36" fill="var(--der-shade)"/>
-      <path d="M0,80 A50,50 0 0 1 100,80 L100,140 L0,140 Z" fill="var(--der)"/>
-      <circle cx="33" cy="68" r="12" fill="#fff"/><circle cx="67" cy="68" r="12" fill="#fff"/>
-      <circle cx="33" cy="70" r="5.7" fill="var(--mouth)"/><circle cx="67" cy="70" r="5.7" fill="var(--mouth)"/>
-      <ellipse cx="50" cy="100" rx="20" ry="10" fill="var(--mouth)"/><ellipse cx="50" cy="104" rx="10" ry="4" fill="var(--tongue)"/>
-      <polygon points="41,90 47,90 44,96" fill="#fff"/><polygon points="53,90 59,90 56,96" fill="#fff"/>
-      <text x="50" y="132" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="inherit">der</text></g></svg>
-    <!-- die: antenna -->
-    <svg viewBox="0 0 100 140">
-      <circle cx="50" cy="8" r="8" fill="var(--sun)"/><rect x="47.5" y="14" width="5" height="22" rx="2.5" fill="var(--die-shade)"/>
-      <path d="M0,80 A50,50 0 0 1 100,80 L100,140 L0,140 Z" fill="var(--die)"/>
-      <circle cx="33" cy="68" r="12" fill="#fff"/><circle cx="67" cy="68" r="12" fill="#fff"/>
-      <circle cx="33" cy="64" r="5.7" fill="var(--mouth)"/><circle cx="67" cy="64" r="5.7" fill="var(--mouth)"/>
-      <ellipse cx="50" cy="102" rx="26" ry="16" fill="var(--mouth)"/><ellipse cx="50" cy="110" rx="14" ry="6" fill="var(--tongue)"/>
-      <text x="50" y="132" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="inherit">die</text></svg>
-    <!-- das: spikes, one eye -->
-    <svg viewBox="0 0 100 140">
-      <polygon points="24,40 32,20 40,40" fill="var(--das-shade)"/><polygon points="40,40 50,12 60,40" fill="var(--das-shade)"/><polygon points="60,40 68,20 76,40" fill="var(--das-shade)"/>
-      <path d="M0,80 A50,50 0 0 1 100,80 L100,140 L0,140 Z" fill="var(--das)"/>
-      <circle cx="50" cy="68" r="17" fill="#fff"/><circle cx="50" cy="70" r="8" fill="var(--mouth)"/>
-      <ellipse cx="50" cy="102" rx="20" ry="10" fill="var(--mouth)"/><ellipse cx="50" cy="106" rx="10" ry="4" fill="var(--tongue)"/>
-      <text x="50" y="132" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="inherit">das</text></svg>
+    <svg class="m" viewBox="-6 -2 112 156" aria-hidden="true"><ellipse class="shadow" cx="50" cy="146" rx="40" ry="6" fill="#1D2B4F"/><g class="hop"><polygon points="18.9,12.6 36.7,38.7 17.5,44.2" fill="#1A4796"/><polygon points="81.1,12.6 82.5,44.2 63.3,38.7" fill="#1A4796"/><path d="M0,80 A50,50 0 0 1 100,80 L100,130 Q100,140 90,140 L10,140 Q0,140 0,130 Z" fill="#2563C9"/><circle cx="33" cy="62" r="12" fill="#fff"/><circle class="pupil" cx="33" cy="63.4" r="5.7" fill="#1D1433"/><circle cx="67" cy="62" r="12" fill="#fff"/><circle class="pupil" cx="67" cy="63.4" r="5.7" fill="#1D1433"/><g class="mouth"><ellipse cx="50" cy="98" rx="20" ry="10" fill="#1D1433"/><ellipse cx="50" cy="101" rx="10" ry="4" fill="#F2A0A8"/></g><polygon class="fang l" points="40,88 47,88 43.5,95" fill="#fff"/><polygon class="fang r" points="53,88 60,88 56.5,95" fill="#fff"/><text x="50" y="132" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">der</text></g></svg>
+    <svg class="m" viewBox="-6 -2 112 156" aria-hidden="true"><ellipse class="shadow" cx="50" cy="146" rx="40" ry="6" fill="#1D2B4F"/><g class="hop"><rect x="47.5" y="18" width="5" height="24" rx="2.5" fill="#962424"/><circle cx="50" cy="9.5" r="8.5" fill="#FFD66B"/><path d="M0,80 A50,50 0 0 1 100,80 L100,130 Q100,140 90,140 L10,140 Q0,140 0,130 Z" fill="#C93434"/><circle cx="33" cy="62" r="12" fill="#fff"/><circle class="pupil" cx="33" cy="63.4" r="5.7" fill="#1D1433"/><circle cx="67" cy="62" r="12" fill="#fff"/><circle class="pupil" cx="67" cy="63.4" r="5.7" fill="#1D1433"/><g class="mouth"><ellipse cx="50" cy="98" rx="20" ry="10" fill="#1D1433"/><ellipse cx="50" cy="101" rx="10" ry="4" fill="#F2A0A8"/></g><text x="50" y="132" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">die</text></g></svg>
+    <svg class="m" viewBox="-6 -2 112 156" aria-hidden="true"><ellipse class="shadow" cx="50" cy="146" rx="40" ry="6" fill="#1D2B4F"/><g class="hop"><polygon points="31.0,22.0 39.5,42.0 22.5,42.0" fill="#125A30"/><polygon points="50.0,14.0 59.5,42.0 40.5,42.0" fill="#125A30"/><polygon points="69.0,22.0 77.5,42.0 60.5,42.0" fill="#125A30"/><path d="M0,80 A50,50 0 0 1 100,80 L100,130 Q100,140 90,140 L10,140 Q0,140 0,130 Z" fill="#1B7A43"/><circle cx="50" cy="62" r="17" fill="#fff"/><circle class="pupil" cx="50" cy="64" r="8.1" fill="#1D1433"/><g class="mouth"><ellipse cx="50" cy="98" rx="20" ry="10" fill="#1D1433"/><ellipse cx="50" cy="101" rx="10" ry="4" fill="#F2A0A8"/></g><text x="50" y="132" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">das</text></g></svg>
   </div>
 </header>
 
