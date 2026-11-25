@@ -1,20 +1,294 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>German Snacks – Support</title><link rel="stylesheet" href="style.css"></head>
-<body><main>
-<div class="ribbon">German Snacks</div>
-<div class="card">
-<h1>Support</h1>
-<p>German Snacks is a set of quick, playful games for learning German, from your first words up to B2.</p>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>German Snacks – Learn German with quick games</title>
+<meta name="description" content="Nine quick games for the tricky parts of German: der, die, das, plurals, cases and endings, plus 6,000 words with natural voices. From A1 to B2. No account, no ads, no tracking.">
+<meta property="og:title" content="German Snacks – Learn German with quick games">
+<meta property="og:description" content="Der, die, das, plurals, cases and endings – as five-minute games. A1 to B2.">
+<meta property="og:image" content="https://germansnacks.yenelij.eu/icon.png">
+<meta property="og:url" content="https://germansnacks.yenelij.eu/">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{
+  --sky:#BFE8F7; --sky-deep:#A9DDF2; --ink:#1D2B4F; --muted:#4A5B70; --ribbon:#6B4FA0; --ribbon-shade:#4A3573;
+  --sun:#FFD66B; --grass:#8FCB74; --grass-dark:#7ABF5E; --card:#fff; --lip:#8FC3DA;
+  --der:#2563C9; --der-shade:#1A4796; --die:#C93434; --die-shade:#962424; --das:#1B7A43; --das-shade:#125A30;
+  --mouth:#1D1433; --tongue:#F2A0A8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);
+  font:17px/1.55 ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--ribbon);font-weight:700}
+img{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 
-<h2>Contact</h2>
-<p>For questions, bug reports or ideas, email <a href="mailto:snacksgerman@gmail.com">snacksgerman@gmail.com</a>. Screenshots help!</p>
+/* nav */
+nav{position:absolute;top:0;left:0;right:0;z-index:5}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:19px}
+.brand img{width:40px;height:40px;border-radius:10px;box-shadow:0 2px 0 rgba(29,43,79,.25)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav ul a{color:var(--ink);text-decoration:none;font-weight:700;font-size:15px}
+nav ul a:hover{color:var(--ribbon)}
 
-<h2>Common questions</h2>
-<p><strong>How do I move my progress to a new phone?</strong><br>If you use iCloud on both devices, progress follows you automatically. You can also use <em>Settings → Backup → Save backup</em> and then <em>Load backup</em> on the new device.</p>
-<p><strong>I already know some German. Do I have to start from the beginning?</strong><br>No. Choose your level in <em>Settings → Level</em>. Everything below it counts as known and only comes back now and then for a quick check.</p>
-<p><strong>How do I start over?</strong><br><em>Settings → Erase progress</em>. This cannot be undone, so save a backup first if you might want it back.</p>
-<p><strong>Where do the words and voices come from?</strong><br>See <em>Settings → Credits &amp; sources</em> in the app.</p>
-</div>
-<footer><a href="privacy.html">Privacy Policy</a></footer>
-</main></body></html>
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(var(--sky),var(--sky-deep));padding:120px 0 0}
+.cloud{position:absolute;background:#fff;border-radius:999px;opacity:.9}
+.cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:999px}
+.c1{width:170px;height:54px;top:118px;left:-30px}.c1::before{width:80px;height:70px;top:-30px;left:34px}.c1::after{width:70px;height:58px;top:-20px;left:90px}
+.c2{width:140px;height:46px;top:210px;right:4%}.c2::before{width:64px;height:58px;top:-26px;left:26px}.c2::after{width:58px;height:48px;top:-16px;left:70px}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-bottom:40px}
+.ribbon{display:inline-block;background:var(--ribbon);color:#fff;font-weight:800;font-size:15px;padding:6px 14px;border-radius:9px;
+  transform:rotate(-2deg);box-shadow:0 4px 0 var(--ribbon-shade);margin-bottom:22px}
+h1{font-size:clamp(36px,5.2vw,58px);line-height:1.05;margin:0 0 18px;letter-spacing:-.02em;font-weight:800}
+h1 .art{white-space:nowrap}
+h1 .der{color:var(--der)}h1 .die{color:var(--die)}h1 .das{color:var(--das)}
+.lead{font-size:20px;color:var(--muted);margin:0 0 28px;max-width:520px;font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;
+  padding:15px 24px;border-radius:16px;box-shadow:0 5px 0 #0E1730;font-size:17px}
+.btn small{display:block;font-size:11px;font-weight:700;opacity:.75;letter-spacing:.04em;text-transform:uppercase}
+.btn .apple{width:22px;height:26px}
+.btn.soon{cursor:default}
+.note{font-size:14px;color:var(--muted);font-weight:700}
+.phone{width:280px;margin:0 auto;border-radius:46px;border:10px solid var(--ink);overflow:hidden;background:var(--ink);
+  box-shadow:0 30px 60px -20px rgba(29,43,79,.45),0 8px 0 rgba(29,43,79,.15)}
+.phone img{width:100%;height:auto}
+.hero .phone{transform:rotate(3deg);margin-bottom:-60px}
+.hills{position:relative;height:150px;margin-top:-40px;z-index:1}
+.hills::before{content:"";position:absolute;left:-20%;right:20%;bottom:-180px;height:320px;background:var(--grass);border-radius:50%}
+.hills::after{content:"";position:absolute;left:35%;right:-25%;bottom:-200px;height:300px;background:var(--grass-dark);border-radius:50%}
+.monsters{position:absolute;z-index:3;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:18px;align-items:flex-end}
+.monsters svg{width:92px;height:auto;display:block}
+
+/* bands */
+.trust{background:var(--grass-dark);color:#fff}
+.trust ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;list-style:none;margin:0;padding:18px 0;font-weight:800;font-size:16px}
+.trust li::before{content:"✓ ";opacity:.8}
+
+section{padding:84px 0}
+h2{font-size:clamp(28px,3.6vw,40px);line-height:1.1;margin:0 0 14px;letter-spacing:-.015em;font-weight:800}
+.kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ribbon);margin-bottom:10px}
+.sub{color:var(--muted);font-size:18px;max-width:640px;margin:0 0 36px;font-weight:600}
+
+/* games grid */
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.game{background:var(--card);border-radius:20px;padding:18px 18px 16px;box-shadow:0 5px 0 #D7E7EF;border:2px solid #E3EEF4}
+.game h3{margin:0 0 4px;font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px}
+.game h3 i{width:12px;height:12px;border-radius:50%;display:inline-block;border:2px solid rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.game p{margin:0;color:var(--muted);font-size:15px;font-weight:600}
+
+/* feature rows */
+.alt{background:#F4FAFD}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.row + .row{margin-top:84px}
+.row.flip .text{order:2}
+.row .phone{width:250px}
+.row p{color:var(--muted);font-size:18px;font-weight:600;margin:0 0 14px}
+.row ul{margin:0;padding-left:20px;color:var(--muted);font-weight:600}
+.row li{margin:4px 0}
+
+/* level */
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.level{background:#fff;border-radius:18px;padding:16px;box-shadow:0 5px 0 #D7E7EF;border:2px solid #E3EEF4}
+.level b{display:block;font-size:22px}
+.level span{color:var(--muted);font-weight:600;font-size:14px}
+.level.on{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 5px 0 #0E1730}
+.level.on span{color:#C9D6F2}
+
+/* launch */
+.launch{background:var(--ribbon);color:#fff;text-align:center}
+.launch h2{color:#fff}
+.launch p{max-width:620px;margin:0 auto 26px;font-size:19px;font-weight:600;color:#EDE6FA}
+.launch .btn{background:#fff;color:var(--ink);box-shadow:0 5px 0 var(--ribbon-shade)}
+
+/* support */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.faq div{background:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 5px 0 #D7E7EF;border:2px solid #E3EEF4}
+.faq h3{margin:0 0 6px;font-size:17px}
+.faq p{margin:0;color:var(--muted);font-weight:600;font-size:15px}
+.contact{background:var(--sky);border-radius:22px;padding:22px 24px;margin-bottom:22px;font-weight:700;font-size:18px}
+
+footer{background:var(--ink);color:#C9D6F2;padding:36px 0;font-size:14px;font-weight:600}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer a{color:#fff}
+footer ul{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padding:0}
+
+@media (max-width:860px){
+  nav ul{display:none}
+  .hero-grid,.row{grid-template-columns:1fr}
+  .hero-grid{text-align:center}.lead{margin-left:auto;margin-right:auto}.cta{justify-content:center}
+  .hero .phone{width:240px}
+  .row.flip .text{order:0}
+  .games,.faq{grid-template-columns:1fr}
+  .levels{grid-template-columns:repeat(2,1fr)}
+  .monsters{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .monsters svg{animation:hop 2.4s ease-in-out infinite;transform-origin:bottom}
+  .monsters svg:nth-child(2){animation-delay:.3s}.monsters svg:nth-child(3){animation-delay:.6s}
+  @keyframes hop{0%,70%,100%{transform:translateY(0) scale(1,1)}80%{transform:translateY(-10px) scale(.96,1.05)}90%{transform:translateY(0) scale(1.04,.95)}}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="icon.png" alt="">German Snacks</a>
+    <ul>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#support">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="cloud c1"></div><div class="cloud c2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="ribbon">Free during launch</span>
+      <h1>The tricky bits of German, as <span class="art"><span class="der">five</span>-<span class="die">minute</span></span> <span class="das">games</span>.</h1>
+      <p class="lead">Der, die, das, plurals, cases and endings – plus 6,000 everyday words with natural voices. From A1 to B2.</p>
+      <div class="cta">
+        <span class="btn soon" role="note">
+          <svg class="apple" viewBox="0 0 22 26" aria-hidden="true"><path fill="currentColor" d="M18.3 13.8c0-3.2 2.6-4.7 2.7-4.8-1.5-2.2-3.8-2.5-4.6-2.5-2-.2-3.8 1.2-4.8 1.2-1 0-2.5-1.1-4.1-1.1-2.1 0-4.1 1.2-5.2 3.1-2.2 3.8-.6 9.5 1.6 12.6 1.1 1.5 2.3 3.2 3.9 3.2 1.6-.1 2.2-1 4.1-1 1.9 0 2.4 1 4.1 1 1.7 0 2.8-1.5 3.8-3.1 1.2-1.7 1.7-3.4 1.7-3.5-.1 0-3.2-1.2-3.2-5.1zM15.2 4.4c.9-1.1 1.5-2.5 1.3-4-1.3.1-2.8.9-3.7 1.9-.8.9-1.5 2.4-1.3 3.9 1.4.1 2.8-.7 3.7-1.8z"/></svg>
+          <span><small>Coming soon to the</small>App Store</span>
+        </span>
+        <span class="note">iPhone · no account needed</span>
+      </div>
+    </div>
+    <div><div class="phone"><img src="screens/monster-drop.jpg" width="374" height="823" alt="Monster Drop: the word Tee falls toward the der, die and das monsters"></div></div>
+  </div>
+  <div class="hills"></div>
+  <div class="monsters" aria-hidden="true">
+    <!-- der: horns -->
+    <svg viewBox="0 0 100 140"><g transform="translate(0,0)">
+      <polygon points="20,36 32,6 40,40" fill="var(--der-shade)"/><polygon points="60,40 68,6 80,36" fill="var(--der-shade)"/>
+      <path d="M0,80 A50,50 0 0 1 100,80 L100,140 L0,140 Z" fill="var(--der)"/>
+      <circle cx="33" cy="68" r="12" fill="#fff"/><circle cx="67" cy="68" r="12" fill="#fff"/>
+      <circle cx="33" cy="70" r="5.7" fill="var(--mouth)"/><circle cx="67" cy="70" r="5.7" fill="var(--mouth)"/>
+      <ellipse cx="50" cy="100" rx="20" ry="10" fill="var(--mouth)"/><ellipse cx="50" cy="104" rx="10" ry="4" fill="var(--tongue)"/>
+      <polygon points="41,90 47,90 44,96" fill="#fff"/><polygon points="53,90 59,90 56,96" fill="#fff"/>
+      <text x="50" y="132" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="inherit">der</text></g></svg>
+    <!-- die: antenna -->
+    <svg viewBox="0 0 100 140">
+      <circle cx="50" cy="8" r="8" fill="var(--sun)"/><rect x="47.5" y="14" width="5" height="22" rx="2.5" fill="var(--die-shade)"/>
+      <path d="M0,80 A50,50 0 0 1 100,80 L100,140 L0,140 Z" fill="var(--die)"/>
+      <circle cx="33" cy="68" r="12" fill="#fff"/><circle cx="67" cy="68" r="12" fill="#fff"/>
+      <circle cx="33" cy="64" r="5.7" fill="var(--mouth)"/><circle cx="67" cy="64" r="5.7" fill="var(--mouth)"/>
+      <ellipse cx="50" cy="102" rx="26" ry="16" fill="var(--mouth)"/><ellipse cx="50" cy="110" rx="14" ry="6" fill="var(--tongue)"/>
+      <text x="50" y="132" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="inherit">die</text></svg>
+    <!-- das: spikes, one eye -->
+    <svg viewBox="0 0 100 140">
+      <polygon points="24,40 32,20 40,40" fill="var(--das-shade)"/><polygon points="40,40 50,12 60,40" fill="var(--das-shade)"/><polygon points="60,40 68,20 76,40" fill="var(--das-shade)"/>
+      <path d="M0,80 A50,50 0 0 1 100,80 L100,140 L0,140 Z" fill="var(--das)"/>
+      <circle cx="50" cy="68" r="17" fill="#fff"/><circle cx="50" cy="70" r="8" fill="var(--mouth)"/>
+      <ellipse cx="50" cy="102" rx="20" ry="10" fill="var(--mouth)"/><ellipse cx="50" cy="106" rx="10" ry="4" fill="var(--tongue)"/>
+      <text x="50" y="132" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="inherit">das</text></svg>
+  </div>
+</header>
+
+<div class="trust"><ul class="wrap"><li>No account</li><li>No ads</li><li>No tracking</li><li>Works offline</li><li>A1 to B2</li></ul></div>
+
+<section id="games">
+  <div class="wrap">
+    <span class="kicker">Nine games</span>
+    <h2>Five minutes at a time.</h2>
+    <p class="sub">Each game drills one thing German learners trip over for years – and every one of them feeds the same memory, so what you miss comes back.</p>
+    <div class="games">
+      <div class="game"><h3><i style="background:#2563C9"></i>Monster Drop</h3><p>Feed each word to the right der, die or das monster.</p></div>
+      <div class="game"><h3><i style="background:#16A085"></i>Mehr davon!</h3><p>Make the plural, from Tisch to Tische.</p></div>
+      <div class="game"><h3><i style="background:#B07A3A"></i>Endungen</h3><p>Sort parcels by their adjective endings.</p></div>
+      <div class="game"><h3><i style="background:#5B3FA0"></i>Mau-Mau</h3><p>The card game, played with cases and verb forms.</p></div>
+      <div class="game"><h3><i style="background:#8A6A3E"></i>Schilder</h3><p>Spot the mistakes on Kalle's shop signs.</p></div>
+      <div class="game"><h3><i style="background:#C98A3A"></i>Kontrolle!</h3><p>Check the tickets: does the word match the meaning?</p></div>
+      <div class="game"><h3><i style="background:#B5682B"></i>Bäckerei</h3><p>Serve customers at a Berlin bakery, café, market, snack bar and ice-cream shop.</p></div>
+      <div class="game"><h3><i style="background:#D4A82A"></i>Kreuzwort</h3><p>A daily German crossword.</p></div>
+      <div class="game"><h3><i style="background:#3B4C8A"></i>Handy</h3><p>Text with Lena, Finn and Kalle and build your answers in German.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <div class="row">
+      <div class="text">
+        <span class="kicker">Real everyday German</span>
+        <h2>Order, serve, listen.</h2>
+        <p>Customers at the Bäckerei order out loud – in their own voices, with a bit of Berlin. Pack what they asked for before their patience runs out.</p>
+        <ul><li>Natural recorded voices, not robot speech</li><li>Notes on what's slang and what's standard</li></ul>
+      </div>
+      <div><div class="phone"><img src="screens/baeckerei.jpg" width="374" height="823" alt="Bäckerei: Frau Schulz orders at the counter" loading="lazy"></div></div>
+    </div>
+    <div class="row flip">
+      <div class="text">
+        <span class="kicker">Grammar you use</span>
+        <h2>Text your Berlin friends – in German.</h2>
+        <p>Lena, Finn and Kalle text you about moving flats, birthdays and Kiez parties. You answer by building real sentences from word tiles: weil, dass, word order, cases.</p>
+      </div>
+      <div><div class="phone"><img src="screens/handy.jpg" width="374" height="823" alt="Handy: a group chat about Finn's move, with word tiles to build a reply" loading="lazy"></div></div>
+    </div>
+    <div class="row">
+      <div class="text">
+        <span class="kicker">Learns with you</span>
+        <h2>A daily review you can actually finish.</h2>
+        <p>Words and rules you get wrong come back sooner; the ones you know come back less often. The Today list only holds what the games didn't reach – so it ends.</p>
+      </div>
+      <div><div class="phone"><img src="screens/today.jpg" width="374" height="823" alt="Today review: what does Tee mean? Correct: der Tee = tea" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">Start at your level</span>
+    <h2>Already know some German? Skip the basics.</h2>
+    <p class="sub">Pick your level on the first launch. Everything below it counts as known and only comes back now and then for a quick check. You can change it any time.</p>
+    <div class="levels">
+      <div class="level"><b>A1</b><span>I'm just starting out</span></div>
+      <div class="level"><b>A2</b><span>Simple everyday conversations</span></div>
+      <div class="level on"><b>B1</b><span>I get by in most situations</span></div>
+      <div class="level"><b>B2</b><span>I talk about most topics with ease</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="launch">
+  <div class="wrap">
+    <h2>Free during launch – and for you, forever.</h2>
+    <p>Everyone who downloads German Snacks during the launch keeps every level free, for good. Coming soon to the App Store for iPhone.</p>
+    <a class="btn" href="mailto:snacksgerman@gmail.com?subject=Tell%20me%20when%20German%20Snacks%20is%20out">Tell me when it's out</a>
+  </div>
+</section>
+
+<section class="alt" id="support">
+  <div class="wrap">
+    <span class="kicker">Support</span>
+    <h2>Questions, bugs, ideas?</h2>
+    <p class="contact">Email <a href="mailto:snacksgerman@gmail.com">snacksgerman@gmail.com</a> – screenshots help!</p>
+    <div class="faq">
+      <div><h3>How do I move my progress to a new phone?</h3><p>If you use iCloud on both devices, progress follows you automatically. You can also use Settings › Backup › Save backup, then Load backup on the new device.</p></div>
+      <div><h3>I already know some German. Do I have to start from the beginning?</h3><p>No. Choose your level in Settings › Level. Everything below it counts as known and only comes back now and then for a quick check.</p></div>
+      <div><h3>How do I start over?</h3><p>Settings › Erase progress. This can't be undone, so save a backup first if you might want it back.</p></div>
+      <div><h3>Where do the words and voices come from?</h3><p>See Settings › Credits &amp; sources in the app. The noun list with articles and plurals is free to download: <a href="german-nouns.csv">german-nouns.csv</a> (<a href="word-data.md">CC BY-SA 4.0</a>).</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 German Snacks</span>
+    <ul><li><a href="privacy.html">Privacy policy</a></li><li><a href="#support">Support</a></li><li><a href="german-nouns.csv">Noun data</a></li></ul>
+  </div>
+</footer>
+
+</body>
+</html>
