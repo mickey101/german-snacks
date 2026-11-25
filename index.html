@@ -78,9 +78,9 @@ h2{font-size:clamp(28px,3.6vw,40px);line-height:1.1;margin:0 0 14px;letter-spaci
 
 /* games grid */
 .games{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.game{background:var(--card);border-radius:20px;padding:18px 18px 16px;box-shadow:0 5px 0 #D7E7EF;border:2px solid #E3EEF4}
-.game h3{margin:0 0 4px;font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px}
-.game h3 i{width:12px;height:12px;border-radius:50%;display:inline-block;border:2px solid rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.game{display:flex;gap:16px;align-items:flex-start;background:var(--card);border-radius:20px;padding:16px;box-shadow:0 5px 0 #D7E7EF;border:2px solid #E3EEF4}
+.game img{width:64px;height:64px;flex:none;border-radius:16px;box-shadow:0 3px 0 #D7E7EF}
+.game h3{margin:2px 0 4px;font-size:18px;font-weight:800}
 .game p{margin:0;color:var(--muted);font-size:15px;font-weight:600}
 
 /* feature rows */
@@ -204,15 +204,15 @@ footer ul{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padd
     <h2>Five minutes at a time.</h2>
     <p class="sub">Each game drills one thing German learners trip over for years – and every one of them feeds the same memory, so what you miss comes back.</p>
     <div class="games">
-      <div class="game"><h3><i style="background:#2563C9"></i>Monster Drop</h3><p>Feed each word to the right der, die or das monster.</p></div>
-      <div class="game"><h3><i style="background:#16A085"></i>Mehr davon!</h3><p>Make the plural, from Tisch to Tische.</p></div>
-      <div class="game"><h3><i style="background:#B07A3A"></i>Endungen</h3><p>Sort parcels by their adjective endings.</p></div>
-      <div class="game"><h3><i style="background:#5B3FA0"></i>Mau-Mau</h3><p>The card game, played with cases and verb forms.</p></div>
-      <div class="game"><h3><i style="background:#8A6A3E"></i>Schilder</h3><p>Spot the mistakes on Kalle's shop signs.</p></div>
-      <div class="game"><h3><i style="background:#C98A3A"></i>Kontrolle!</h3><p>Check the tickets: does the word match the meaning?</p></div>
-      <div class="game"><h3><i style="background:#B5682B"></i>Bäckerei</h3><p>Serve customers at a Berlin bakery, café, market, snack bar and ice-cream shop.</p></div>
-      <div class="game"><h3><i style="background:#D4A82A"></i>Kreuzwort</h3><p>A daily German crossword.</p></div>
-      <div class="game"><h3><i style="background:#3B4C8A"></i>Handy</h3><p>Text with Lena, Finn and Kalle and build your answers in German.</p></div>
+      <div class="game"><img src="games/monster-drop.png" width="64" height="64" alt="" loading="lazy"><div><h3>Monster Drop</h3><p>Feed each word to the right der, die or das monster.</p></div></div>
+      <div class="game"><img src="games/mehr-davon.png" width="64" height="64" alt="" loading="lazy"><div><h3>Mehr davon!</h3><p>Make the plural, from Tisch to Tische.</p></div></div>
+      <div class="game"><img src="games/endungen.png" width="64" height="64" alt="" loading="lazy"><div><h3>Endungen</h3><p>Sort parcels by their adjective endings.</p></div></div>
+      <div class="game"><img src="games/mau-mau.png" width="64" height="64" alt="" loading="lazy"><div><h3>Mau-Mau</h3><p>The card game, played with cases and verb forms.</p></div></div>
+      <div class="game"><img src="games/schilder.png" width="64" height="64" alt="" loading="lazy"><div><h3>Schilder</h3><p>Spot the mistakes on Kalle's shop signs.</p></div></div>
+      <div class="game"><img src="games/kontrolle.png" width="64" height="64" alt="" loading="lazy"><div><h3>Kontrolle!</h3><p>Check the tickets: does the word match the meaning?</p></div></div>
+      <div class="game"><img src="games/baeckerei.png" width="64" height="64" alt="" loading="lazy"><div><h3>Bäckerei</h3><p>Serve customers at a Berlin bakery, café, market, snack bar and ice-cream shop.</p></div></div>
+      <div class="game"><img src="games/kreuzwort.png" width="64" height="64" alt="" loading="lazy"><div><h3>Kreuzwort</h3><p>A daily German crossword.</p></div></div>
+      <div class="game"><img src="games/handy.png" width="64" height="64" alt="" loading="lazy"><div><h3>Handy</h3><p>Text with Lena, Finn and Kalle and build your answers in German.</p></div></div>
     </div>
   </div>
 </section>
